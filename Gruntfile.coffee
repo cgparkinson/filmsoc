@@ -70,8 +70,8 @@ module.exports = (grunt) ->
 					port: 21
 					authKey: 'deployment'
 				src: 'build'
-				dest: '/home/hudson/misc/dhb8hbf/public_html/newsite'
-				exclusions: ['.DS_Store']
+				dest: '/home/hudson/misc/dhb8hbf/public_html'
+				exclusions: ['.DS_Store', '**/editThisFileToChangePassword.txt']
 				
 
 

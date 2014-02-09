@@ -1,6 +1,6 @@
 <?php
 	require_once('../lib.php');
-	$pass = file_get_contents('editThisFileToChangePassword.txt');
+	$pass = trim(file_get_contents('editThisFileToChangePassword.txt'));
 	$loginFailed = 0;
 	
 	//Check if logging in
