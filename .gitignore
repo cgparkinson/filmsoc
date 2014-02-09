@@ -1,0 +1,8 @@
+
+.ftppass
+node_modules/*
+build/*
+posters/*
+!posters/agm.jpg
+passwords.php
+.DS_Store
