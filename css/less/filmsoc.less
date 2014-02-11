@@ -70,6 +70,7 @@ header {
 }
 
 .hero {
+	width: 100%;
 	height: 600px;
 	overflow: hidden;
 	.flex-container();
@@ -104,6 +105,7 @@ header {
 	
 	.tape {
 		.flex-container();
+		width: 100%;
 		&:after, &:before {
 			content: "";
 			display: block;
@@ -129,8 +131,7 @@ header {
 		height: 210px;
 		text-indent: -9999px;
 		color: transparent;
-		width: 100%;
-		max-width: 872px;
+		width: 872px;
 		margin: auto;
 		position: relative;
 		z-index: 0;
@@ -146,7 +147,7 @@ header {
 			background-position: right 14px top;
 		}
 		
-		@media(max-width:880px) {
+		@media(max-width:872px) {
 			background-image: url('../images/film-segment.png');
 			background-image: url('../images/film-segment.svg');
 			background-position: 0 top;
@@ -160,6 +161,7 @@ header {
 			text-transform: uppercase;
 			font-weight: 300;
 			font-size: 64px;
+			width: 100%;
 			span {
 				display: inline-block;
 				height: 110px;

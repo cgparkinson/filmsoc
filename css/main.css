@@ -783,6 +783,7 @@ header nav a:hover {
   }
 }
 .hero {
+  width: 100%;
   height: 600px;
   overflow: hidden;
   display: -webkit-box;
@@ -847,6 +848,7 @@ header nav a:hover {
   /* NEW - Chrome */
   display: flex;
   /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  width: 100%;
 }
 .hero .tape:after,
 .hero .tape:before {
@@ -893,8 +895,7 @@ header nav a:hover {
   height: 210px;
   text-indent: -9999px;
   color: transparent;
-  width: 100%;
-  max-width: 872px;
+  width: 872px;
   margin: auto;
   position: relative;
   z-index: 0;
@@ -907,7 +908,7 @@ header nav a:hover {
   background-position: right top;
   background-position: right 14px top;
 }
-@media (max-width: 880px) {
+@media (max-width: 872px) {
   .hero h1 {
     background-image: url('../images/film-segment.png');
     background-image: url('../images/film-segment.svg');
@@ -922,6 +923,7 @@ header nav a:hover {
     text-transform: uppercase;
     font-weight: 300;
     font-size: 64px;
+    width: 100%;
   }
   .hero h1 span {
     display: inline-block;
@@ -938,6 +940,7 @@ header nav a:hover {
   text-align: center;
 }
 #welcome {
+  width: 100%;
   height: 600px;
   overflow: hidden;
   display: -webkit-box;
@@ -1003,6 +1006,7 @@ header nav a:hover {
   /* NEW - Chrome */
   display: flex;
   /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  width: 100%;
 }
 #welcome .tape:after,
 #welcome .tape:before {
@@ -1049,8 +1053,7 @@ header nav a:hover {
   height: 210px;
   text-indent: -9999px;
   color: transparent;
-  width: 100%;
-  max-width: 872px;
+  width: 872px;
   margin: auto;
   position: relative;
   z-index: 0;
@@ -1063,7 +1066,7 @@ header nav a:hover {
   background-position: right top;
   background-position: right 14px top;
 }
-@media (max-width: 880px) {
+@media (max-width: 872px) {
   #welcome h1 {
     background-image: url('../images/film-segment.png');
     background-image: url('../images/film-segment.svg');
@@ -1078,6 +1081,7 @@ header nav a:hover {
     text-transform: uppercase;
     font-weight: 300;
     font-size: 64px;
+    width: 100%;
   }
   #welcome h1 span {
     display: inline-block;
