@@ -30,6 +30,7 @@
 	<header id="top">
 		<nav>
 			<a href="../">Home</a>
+			<a href="pr/">PR Tools</a>
 		</nav>
 	</header>
 	

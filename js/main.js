@@ -2,7 +2,11 @@ var Filmsoc = {
 	
 	init: function() {
 		if(location.pathname.indexOf('/admin') > -1) {
-			Filmsoc.admin.init()
+			if(document.body.id == 'pr') {
+				Filmsoc.admin.initPR()
+			} else {
+				Filmsoc.admin.init()
+			}
 		} else if(document.body.id === 'home') {
 			Filmsoc.initHome()
 		}
@@ -284,6 +288,202 @@ var Filmsoc = {
 					}, true)
 				}
 			})
+		},
+		
+		initPR: function() {
+			console.log('PR page')
+			var c = document.getElementById('fbcovercanvas'),
+				ctx = c.getContext('2d'),
+				w = c.width = 1702,
+				h = c.height = 630,
+				pr = Filmsoc.admin.pr
+			
+			ctx.save()
+			ctx.font = '60px "Open Sans", sans-serif'
+			ctx.textAlign = 'center'
+			ctx.fillText('Loading Banner Editor', w/2, h/2)
+			
+			//Preload images
+			for(var i = 0; i < pr.preloadImages.length; i++) {
+				var img = pr.preloadImages[i]
+				img.img.onload = function() {
+					pr.imageLoaded()
+				}
+				img.img.src = '../../images/'+img.src
+			}
+			
+		},
+		
+		pr: {
+			preloadImages: [
+				{
+					src:'film-segment.svg',
+					img: new Image()
+				},
+				{
+					src:'logo.svg',
+					img: new Image()
+				},
+				{
+					src:'curtain.jpg',
+					img: new Image()
+				}
+			],
+			
+			loadedCount: 0,
+			
+			customImages: [
+				{
+					src:'http://thecatapi.com/api/images/get?format=src&b=1',
+					img: new Image()
+				},
+				{
+					src:'http://thecatapi.com/api/images/get?format=src&b=2',
+					img: new Image()
+				},
+				{
+					src:'http://thecatapi.com/api/images/get?format=src&b=3',
+					img: new Image()
+				}
+			],
+			
+			imageLoaded: function() {
+				var pr = Filmsoc.admin.pr
+				pr.loadedCount++
+				if(pr.loadedCount === pr.preloadImages.length) {
+					pr.initEditor()
+				}
+			},
+			
+			customImageLoaded: function() {
+				var pr = Filmsoc.admin.pr
+				console.log('beans')
+				if(pr.customImages.slice(0).reduce(function(a, b) {
+					var bLoaded = (typeof b.img.naturalWidth !== "undefined" && b.img.naturalWidth !== 0)
+					return a && bLoaded
+				}, true)) {
+					console.log('everything loaded!')
+					pr.drawCanvas()
+				}
+			},
+			
+			initEditor: function() {
+				var pr = Filmsoc.admin.pr
+				
+				//Preload images
+				for(var i = 0; i < pr.customImages.length; i++) {
+					var img = pr.customImages[i]
+					img.img.onload = function() {
+						pr.customImageLoaded()
+					}
+					img.img.src = img.src
+				}
+				
+				console.log('editor init')
+				
+			},
+			
+			drawCanvas: function() {
+				var c = document.getElementById('fbcovercanvas'),
+					ctx = c.getContext('2d'),
+					w = c.width,
+					h = c.height,
+					pr = Filmsoc.admin.pr,
+					imgs = {
+						filmstrip: pr.preloadImages[0].img,
+						logo: pr.preloadImages[1].img,
+						curtain: pr.preloadImages[2].img
+					}
+				
+					
+				//Placeholder bg image
+				ctx.drawImage(imgs.curtain, 0, 0, w, w/imgs.curtain.width * imgs.curtain.height)
+				
+				var points = {
+					lt: w/3 - 55 - h/2*Math.cos(72*Math.PI/180),
+					lb: w/3 - 55 + h/2*Math.cos(72*Math.PI/180),
+					rt: w - (w/3 - 55 - h/2*Math.cos(72*Math.PI/180)),
+					rb: w - (w/3 - 55 + h/2*Math.cos(72*Math.PI/180))
+				}
+				
+				//Image 1
+				var img1 = pr.customImages[0].img,
+					img1w = points.lb,
+					img1ratio = Math.max(img1w/img1.width, h/img1.height)
+				ctx.save()
+					ctx.beginPath()
+					ctx.moveTo(0,0)
+					ctx.lineTo(points.lt, 0)
+					ctx.lineTo(points.lb, h)
+					ctx.lineTo(0, h)
+					ctx.lineTo(0,0)
+					ctx.closePath()
+					ctx.clip()
+					ctx.drawImage(img1, 0, 0, img1ratio*img1.width, img1ratio*img1.height)
+				ctx.restore()
+				
+				//Image 2
+				var img2 = pr.customImages[1].img,
+					img2w = points.rt - points.lt,
+					img2ratio = Math.max(img2w/img2.width, h/img2.height)
+				ctx.save()
+					ctx.beginPath()
+					ctx.moveTo(points.lt, 0)
+					ctx.lineTo(points.rt, 0)
+					ctx.lineTo(points.rb, h)
+					ctx.lineTo(points.lb, h)
+					ctx.closePath()
+					ctx.clip()
+					ctx.drawImage(img2, points.lt, 0, img2ratio*img2.width, img2ratio*img2.height)
+				ctx.restore()
+				
+				//Image 3
+				var img3 = pr.customImages[2].img,
+					img3w = w - points.rb,
+					img3ratio = Math.max(img3w/img3.width, h/img3.height)
+				ctx.save()
+					ctx.beginPath()
+					ctx.moveTo(points.rt, 0)
+					ctx.lineTo(points.rb, h)
+					ctx.lineTo(w, h)
+					ctx.lineTo(w, 0)
+					ctx.closePath()
+					ctx.clip()
+					ctx.drawImage(img3, points.rb, 0, img3ratio*img3.width, img3ratio*img3.height)
+				ctx.restore()
+				
+				
+				//Filmstrips
+				var filmstrip = ctx.createPattern(imgs.filmstrip, 'repeat-x')
+				ctx.save()
+					ctx.translate(w/3, h/2)
+					ctx.rotate(72*Math.PI/180)
+					ctx.fillStyle = filmstrip
+					ctx.fillRect(-h*1.5, 0, h*3, 110)
+				ctx.restore()
+				
+				ctx.save()
+					ctx.scale(-1, 1)
+					ctx.translate(-w + w/3, h/2)
+					ctx.rotate(72*Math.PI/180)
+					ctx.fillStyle = filmstrip
+					ctx.fillRect(-h*1.5, 0, h*3, 110)
+				ctx.restore()
+				
+				
+				//Logo
+				var logo = imgs.logo,
+					gap = 400,
+					logow = w - gap*2
+					
+				ctx.drawImage(
+					imgs.logo,
+					gap,
+					h*0.65,
+					logow,
+					logo.height * logow/imgs.logo.width
+				)
+			}
 		},
 		
 		suggestions: [],
