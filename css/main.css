@@ -2381,6 +2381,39 @@ footer a {
   width: 851px;
   height: 315px;
 }
+#pr #files {
+  background: white;
+  width: 400px;
+  margin: 20px auto 40px;
+  padding: 30px;
+}
+#pr #files input {
+  display: block;
+  color: black;
+  margin: 10px auto;
+}
+#pr #downloadbutton {
+  width: 200px;
+  margin: 10px auto;
+  color: black;
+  text-align: center;
+  font-weight: 300;
+  font-size: 20px;
+  background: white;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-transition: all 0.2s ease 0s;
+  -moz-transition: all 0.2s ease 0s;
+  -o-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+#pr #downloadbutton:hover {
+  background: #aaa;
+}
 #all-showings {
   background: black;
 }

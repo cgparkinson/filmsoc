@@ -36,6 +36,12 @@
 	<main>
 		<h2>Banner Photo Generator</h2>
 		<canvas id="fbcovercanvas"></canvas>
+		<div id="files">
+			<input type="file" name="img1" id="img1">
+			<input type="file" name="img2" id="img2">
+			<input type="file" name="img3" id="img3">
+		</div>
+		<div id="downloadbutton">Generate Image</div>
 	</main>
 	
 	

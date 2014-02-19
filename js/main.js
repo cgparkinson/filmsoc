@@ -291,7 +291,6 @@ var Filmsoc = {
 		},
 		
 		initPR: function() {
-			console.log('PR page')
 			var c = document.getElementById('fbcovercanvas'),
 				ctx = c.getContext('2d'),
 				w = c.width = 1702,
@@ -311,6 +310,11 @@ var Filmsoc = {
 				}
 				img.img.src = '../../images/'+img.src
 			}
+			
+			//Make button open banner
+			document.getElementById('downloadbutton').addEventListener('click', function() {
+				window.open(c.toDataURL('image/jpeg'), 'imgwindow')
+			}, false)
 			
 		},
 		
@@ -334,15 +338,15 @@ var Filmsoc = {
 			
 			customImages: [
 				{
-					src:'http://thecatapi.com/api/images/get?format=src&b=1',
+					src:'',
 					img: new Image()
 				},
 				{
-					src:'http://thecatapi.com/api/images/get?format=src&b=2',
+					src:'',
 					img: new Image()
 				},
 				{
-					src:'http://thecatapi.com/api/images/get?format=src&b=3',
+					src:'',
 					img: new Image()
 				}
 			],
@@ -357,12 +361,10 @@ var Filmsoc = {
 			
 			customImageLoaded: function() {
 				var pr = Filmsoc.admin.pr
-				console.log('beans')
 				if(pr.customImages.slice(0).reduce(function(a, b) {
-					var bLoaded = (typeof b.img.naturalWidth !== "undefined" && b.img.naturalWidth !== 0)
+					var bLoaded = b.src === '' || (typeof b.img.naturalWidth !== "undefined" && b.img.naturalWidth !== 0)
 					return a && bLoaded
 				}, true)) {
-					console.log('everything loaded!')
 					pr.drawCanvas()
 				}
 			},
@@ -370,16 +372,21 @@ var Filmsoc = {
 			initEditor: function() {
 				var pr = Filmsoc.admin.pr
 				
-				//Preload images
-				for(var i = 0; i < pr.customImages.length; i++) {
-					var img = pr.customImages[i]
+				//Add the event listeners to the file inputs
+				$('input[type=file]').on('change', function(e) {
+					var f = this.files[0],
+						url = window.URL || window.webkitURL,
+						src = url.createObjectURL(f),
+						i = parseInt(this.id.replace('img', ''))-1,
+						img = pr.customImages[i]
+					img.src = src
 					img.img.onload = function() {
 						pr.customImageLoaded()
 					}
 					img.img.src = img.src
-				}
-				
-				console.log('editor init')
+				})
+
+				pr.drawCanvas()
 				
 			},
 			
@@ -407,50 +414,55 @@ var Filmsoc = {
 				}
 				
 				//Image 1
-				var img1 = pr.customImages[0].img,
-					img1w = points.lb,
-					img1ratio = Math.max(img1w/img1.width, h/img1.height)
-				ctx.save()
-					ctx.beginPath()
-					ctx.moveTo(0,0)
-					ctx.lineTo(points.lt, 0)
-					ctx.lineTo(points.lb, h)
-					ctx.lineTo(0, h)
-					ctx.lineTo(0,0)
-					ctx.closePath()
-					ctx.clip()
-					ctx.drawImage(img1, 0, 0, img1ratio*img1.width, img1ratio*img1.height)
-				ctx.restore()
-				
+				if(pr.customImages[0].img) {
+					var img1 = pr.customImages[0].img,
+						img1w = points.lb,
+						img1ratio = Math.max(img1w/img1.width, h/img1.height)
+					ctx.save()
+						ctx.beginPath()
+						ctx.moveTo(0,0)
+						ctx.lineTo(points.lt, 0)
+						ctx.lineTo(points.lb, h)
+						ctx.lineTo(0, h)
+						ctx.lineTo(0,0)
+						ctx.closePath()
+						ctx.clip()
+						ctx.drawImage(img1, 0.5*(img1w-img1ratio*img1.width), -0.5*(img1ratio*img1.height-h), img1ratio*img1.width, img1ratio*img1.height)
+					ctx.restore()
+				}
 				//Image 2
-				var img2 = pr.customImages[1].img,
-					img2w = points.rt - points.lt,
-					img2ratio = Math.max(img2w/img2.width, h/img2.height)
-				ctx.save()
-					ctx.beginPath()
-					ctx.moveTo(points.lt, 0)
-					ctx.lineTo(points.rt, 0)
-					ctx.lineTo(points.rb, h)
-					ctx.lineTo(points.lb, h)
-					ctx.closePath()
-					ctx.clip()
-					ctx.drawImage(img2, points.lt, 0, img2ratio*img2.width, img2ratio*img2.height)
-				ctx.restore()
+				if(pr.customImages[1].img) {
+					var img2 = pr.customImages[1].img,
+						img2w = points.rt - points.lt,
+						img2ratio = Math.max(img2w/img2.width, h/img2.height)
+					ctx.save()
+						ctx.beginPath()
+						ctx.moveTo(points.lt, 0)
+						ctx.lineTo(points.rt, 0)
+						ctx.lineTo(points.rb, h)
+						ctx.lineTo(points.lb, h)
+						ctx.closePath()
+						ctx.clip()
+						ctx.drawImage(img2, points.lt+0.5*(img2w-img2ratio*img2.width), -0.5*(img2ratio*img2.height-h), img2ratio*img2.width, img2ratio*img2.height)
+					ctx.restore()
+				}
 				
 				//Image 3
-				var img3 = pr.customImages[2].img,
-					img3w = w - points.rb,
-					img3ratio = Math.max(img3w/img3.width, h/img3.height)
-				ctx.save()
-					ctx.beginPath()
-					ctx.moveTo(points.rt, 0)
-					ctx.lineTo(points.rb, h)
-					ctx.lineTo(w, h)
-					ctx.lineTo(w, 0)
-					ctx.closePath()
-					ctx.clip()
-					ctx.drawImage(img3, points.rb, 0, img3ratio*img3.width, img3ratio*img3.height)
-				ctx.restore()
+				if(pr.customImages[2].img) {
+					var img3 = pr.customImages[2].img,
+						img3w = w - points.rb,
+						img3ratio = Math.max(img3w/img3.width, h/img3.height)
+					ctx.save()
+						ctx.beginPath()
+						ctx.moveTo(points.rt, 0)
+						ctx.lineTo(points.rb, h)
+						ctx.lineTo(w, h)
+						ctx.lineTo(w, 0)
+						ctx.closePath()
+						ctx.clip()
+						ctx.drawImage(img3, points.rb+0.5*(img3w-img3ratio*img3.width), -0.5*(img3ratio*img3.height-h), img3ratio*img3.width, img3ratio*img3.height)
+					ctx.restore()
+				}
 				
 				
 				//Filmstrips
@@ -475,7 +487,6 @@ var Filmsoc = {
 				var logo = imgs.logo,
 					gap = 400,
 					logow = w - gap*2
-					
 				ctx.drawImage(
 					imgs.logo,
 					gap,

@@ -49,7 +49,7 @@ module.exports = (grunt) ->
 				files: [
 					{
 						expand:true
-						src: ['**', '!build/**', '!package.json', '!Gruntfile.coffee', '!js/coffee/**', '!*.bat', '!node_modules/**', '!css/', '!css/**', '!posters/**']
+						src: ['**', '!build/**', '!package.json', '!Gruntfile.coffee', '!js/coffee/**', '!*.bat', '!node_modules/**', '!css/', '!css/**', '!posters/**', '!branding/**']
 						dest: 'build/'
 						filter: 'isFile'
 					}
@@ -71,7 +71,7 @@ module.exports = (grunt) ->
 					authKey: 'deployment'
 				src: 'build'
 				dest: '/home/hudson/misc/dhb8hbf/public_html'
-				exclusions: ['.DS_Store', '**/editThisFileToChangePassword.txt']
+				exclusions: ['.DS_Store', '**/editThisFileToChangePassword.txt', 'branding/**']
 				
 
 
