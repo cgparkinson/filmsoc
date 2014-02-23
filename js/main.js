@@ -419,19 +419,22 @@ var Filmsoc = {
 					
 				console.log(w, h, lines)
 				
-				c.width = w
+				c.width = w*2
 				c.style.width = w+'px'
-				c.height = h
+				c.height = h*2
 				c.style.height = h+'px'
 				
-				var filmstrip = ctx.createPattern(imgs.filmstrip, 'repeat')
-				ctx.fillStyle = filmstrip
-				ctx.fillRect(0,0,w,h)
+// 				var filmstrip = ctx.createPattern(imgs.filmstrip, 'repeat')
+// 				ctx.save()
+// 				ctx.scale(2,2)
+// 				ctx.fillStyle = filmstrip
+// 				ctx.fillRect(0,0,w,h)
+// 				ctx.restore()
 				
 				
 				ctx.fillStyle = 'black'
 				ctx.textAlign = 'center'
-				ctx.font = '55px Open Sans'
+				ctx.font = '110px Open Sans'
 				//ctx.textBaseline = 'alphabetic'
 				var i,
 					j,
@@ -441,19 +444,24 @@ var Filmsoc = {
 					
 				for(i = 0; i < lines.length; i++) {
 					line = lines[i]
-					for(j = 0; j < line.length; j++) {
-						char = line[j]
-						//Scale so W fits
-						if(char === 'W') {
-							factor = 0.8
-						} else {
-							factor = 1
+					for(j = 0; j < w; j++) {
+						
+						ctx.drawImage(imgs.filmstrip, j*110, i*220, 110, 220)
+						
+						if(j < line.length) {
+							char = line[j]
+							//Scale so W fits
+							if(char === 'W') {
+								factor = 0.8
+							} else {
+								factor = 1
+							}
+							ctx.save()
+							ctx.translate(j*110 + 55, 220*i + 150)
+							ctx.scale(factor, 1)
+							ctx.fillText(char, 0, 0)
+							ctx.restore()
 						}
-						ctx.save()
-						ctx.translate(j*55 + 55/2, 110*i + 75)
-						ctx.scale(factor, 1)
-						ctx.fillText(char, 0, 0)
-						ctx.restore()
 					}
 				}
 			},
