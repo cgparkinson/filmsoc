@@ -42,6 +42,14 @@
 			<input type="file" name="img3" id="img3">
 		</div>
 		<div id="downloadbutton">Generate Image</div>
+		
+		<h2>Filmstrip Text Generator</h2>
+		<canvas id="filmstriptextcanvas"></canvas>
+		<div id="text">
+			<textarea name="filmstriptext" id="filmstriptext">SAMPLE
+TEXT</textarea>
+		</div>
+		<div id="downloadbutton2">Generate Image</div>
 	</main>
 	
 	

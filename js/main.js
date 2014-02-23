@@ -316,6 +316,9 @@ var Filmsoc = {
 				window.open(c.toDataURL('image/jpeg'), 'imgwindow')
 			}, false)
 			
+			document.getElementById('downloadbutton2').addEventListener('click', function() {
+				window.open(document.getElementById('filmstriptextcanvas').toDataURL('image/png'), 'imgwindow')
+			}, false)
 		},
 		
 		pr: {
@@ -365,7 +368,7 @@ var Filmsoc = {
 					var bLoaded = b.src === '' || (typeof b.img.naturalWidth !== "undefined" && b.img.naturalWidth !== 0)
 					return a && bLoaded
 				}, true)) {
-					pr.drawCanvas()
+					pr.drawFBCoverCanvas()
 				}
 			},
 			
@@ -386,11 +389,76 @@ var Filmsoc = {
 					img.img.src = img.src
 				})
 
-				pr.drawCanvas()
+				pr.drawFBCoverCanvas()
 				
+				//Add event listener to textarea
+				$('#filmstriptext').on('input', function(){
+					pr.drawFilmstripTextCanvas()
+				})
+				
+				pr.drawFilmstripTextCanvas()
 			},
 			
-			drawCanvas: function() {
+			drawFilmstripTextCanvas: function() {
+				var c = document.getElementById('filmstriptextcanvas'),
+					ctx = c.getContext('2d'),
+					pr = Filmsoc.admin.pr,
+					txt = document.getElementById('filmstriptext').value,
+					lines = txt.split(/(\r\n|\n|\r)/gm).filter(function(el) {
+						return !((/(\r\n|\n|\r)/gm).test(el))
+					}),
+					h = lines.length*110,
+					w = Math.max.apply(null, lines.slice(0).map(function(el) {
+						return el.length
+					}))*55,
+					imgs = {
+						filmstrip: pr.preloadImages[0].img,
+						logo: pr.preloadImages[1].img,
+						curtain: pr.preloadImages[2].img
+					}
+					
+				console.log(w, h, lines)
+				
+				c.width = w
+				c.style.width = w+'px'
+				c.height = h
+				c.style.height = h+'px'
+				
+				var filmstrip = ctx.createPattern(imgs.filmstrip, 'repeat')
+				ctx.fillStyle = filmstrip
+				ctx.fillRect(0,0,w,h)
+				
+				
+				ctx.fillStyle = 'black'
+				ctx.textAlign = 'center'
+				ctx.font = '55px Open Sans'
+				//ctx.textBaseline = 'alphabetic'
+				var i,
+					j,
+					line,
+					char,
+					factor = 1
+					
+				for(i = 0; i < lines.length; i++) {
+					line = lines[i]
+					for(j = 0; j < line.length; j++) {
+						char = line[j]
+						//Scale so W fits
+						if(char === 'W') {
+							factor = 0.8
+						} else {
+							factor = 1
+						}
+						ctx.save()
+						ctx.translate(j*55 + 55/2, 110*i + 75)
+						ctx.scale(factor, 1)
+						ctx.fillText(char, 0, 0)
+						ctx.restore()
+					}
+				}
+			},
+			
+			drawFBCoverCanvas: function() {
 				var c = document.getElementById('fbcovercanvas'),
 					ctx = c.getContext('2d'),
 					w = c.width,

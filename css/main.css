@@ -2371,6 +2371,12 @@ footer a {
   text-align: center;
   font-weight: 300;
   font-size: 30px;
+  margin: 40px 0;
+  padding: 40px 0 20px;
+  border-top: 1px solid white;
+}
+#pr h2:first-child {
+  border-top: none;
 }
 #pr canvas {
   background: white;
@@ -2381,18 +2387,31 @@ footer a {
   width: 851px;
   height: 315px;
 }
-#pr #files {
+#pr #filmstriptextcanvas {
+  width: 330px;
+  height: 220px;
+}
+#pr canvas + div {
   background: white;
   width: 400px;
   margin: 20px auto 40px;
   padding: 30px;
 }
-#pr #files input {
+#pr canvas + div input {
   display: block;
   color: black;
   margin: 10px auto;
 }
-#pr #downloadbutton {
+#pr #filmstriptextcanvas + div {
+  padding: 0;
+}
+#pr #filmstriptextcanvas + div textarea {
+  width: 100%;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 28px;
+}
+#pr [id*=downloadbutton] {
   width: 200px;
   margin: 10px auto;
   color: black;
@@ -2411,7 +2430,7 @@ footer a {
   -o-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
 }
-#pr #downloadbutton:hover {
+#pr [id*=downloadbutton]:hover {
   background: #aaa;
 }
 #all-showings {

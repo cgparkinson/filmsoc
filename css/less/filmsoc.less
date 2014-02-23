@@ -1016,6 +1016,12 @@ footer {
 		text-align: center;
 		font-weight: 300;
 		font-size: 30px;
+		margin: 40px 0;
+		padding: 40px 0 20px;
+		border-top: 1px solid white;
+		&:first-child {
+			border-top: none;
+		}
 	}
 	
 	canvas {
@@ -1029,8 +1035,12 @@ footer {
 		height: 315px;
 	}
 	
-	#files {
-		
+	#filmstriptextcanvas {
+		width: 330px;
+		height: 220px;
+	}
+	
+	canvas+div {
 		background: white;
 		
 		width: 400px;
@@ -1045,7 +1055,18 @@ footer {
 		 }
 	}
 	
-	#downloadbutton {
+	#filmstriptextcanvas+div {
+		padding: 0;
+		textarea {
+			width: 100%;
+			padding: 5px;
+			font-family: monospace;
+			font-size: 28px;
+		}
+	}
+	
+	
+	[id*=downloadbutton] {
 		width: 200px;
 		margin: 10px auto;
 		color: black;
