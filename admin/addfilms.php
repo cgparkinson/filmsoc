@@ -17,7 +17,7 @@
 	<title>Bede Film Society - Manage Films</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="../favicon.ico">
 	<link rel="stylesheet" href="../css/main.css">
 	<script src="../js/libs/modernizr-2.6.2.min.js"></script>
@@ -70,6 +70,12 @@
 		echo(tokenize($film, $template));
 	}
 ?>
+		</div>
+		<div id="passwords">
+			<h2>Society Account Details</h2>
+			<?php
+			include('passwordsFragment.html')
+			?>
 		</div>
 	</main>
 	

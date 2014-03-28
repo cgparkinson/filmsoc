@@ -5,4 +5,6 @@ build/*
 posters/*
 !posters/agm.jpg
 passwords.php
+admin/passwordsFragment.html
 .DS_Store
+branding/Ident/*

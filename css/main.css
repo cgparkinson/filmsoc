@@ -2326,6 +2326,15 @@ footer a {
     padding-right: 15px;
   }
 }
+#addfilms #passwords ul {
+  color: white;
+}
+#addfilms #passwords ul li a {
+  background: white;
+  color: #333;
+  text-decoration: none;
+  padding: 3px;
+}
 #pr main {
   min-height: 100%;
   padding: 30px 0;
