@@ -54,23 +54,40 @@
 		<section>
 			<h2>Current Exec</h2>
 			<ul id="exec_members">
-				<li><a href="mailto:a.d.leadbeater@durham.ac.uk">President, Alex Leadbeater</a></li>
-				<li>Vice President, Josh 'Captain' Cork </li>
-				<li>Secretary, Joseph Baum </li>
-				<li>Treasurer, Matt Emmerson </li>
-				<li>Sweetie 'Lady' (Candy Man), James Milne </li>
-				<li>Publicity Officer, Leo Sutton</li>
-				<li>Social Secretary, Amaya Reik </li>
-				<li>Sponsorship Secretary, Harriet Cutts</li>
-				<li>PR Officer, Anjali Bhattacharjee </li>
-				<li>Chief Projectionist, Emma Sinclair
-				</li><li>Projectionista, Josie Sacks </li>
-				<li>Projectionist, Justin Murray </li>
+				<li>President, Matt Emmerson</li>
+				<li>Vice President, James Milne</li>
+				<li>Secretary, Leo Sutton</li>
+				<li>Treasurer, Adam Lewis</li>
+				<li>Sweetie Lady, Kim Rau</li>
+				<li>Publicity Officer, Louise Message</li>
+				<li>Social Secretary, Sophi O' Connor</li>
+				<li>Sponsorship Secretary, Emma Thomason</li>
+				<li>PR Officer, Ben Tattersley</li>
+				<li>Chief Projectionist, Katie Self</li>
 				<li>Club Mascot, Mr. Phil. M. Soc </li>
 			</ul>
 		</section>
 		<section>
 			<h2>Former Exec</h2>
+			<div class="former_exec">
+				<h4>2013-2014</h4>
+				<ul>
+					<li>President, Alex Leadbeater</li>
+					<li>Vice President, Josh 'Captain' Cork </li>
+					<li>Secretary, Joseph Baum </li>
+					<li>Treasurer, Matt Emmerson </li>
+					<li>Sweetie 'Lady' (Candy Man), James Milne </li>
+					<li>Publicity Officer, Leo Sutton</li>
+					<li>Social Secretary, Amaya Reik </li>
+					<li>Sponsorship Secretary, Harriet Cutts</li>
+					<li>PR Officer, Anjali Bhattacharjee </li>
+					<li>Chief Projectionist, Emma Sinclair
+					</li><li>Projectionista, Josie Sacks </li>
+					<li>Projectionist, Justin Murray </li>
+					<li>Club Mascot, Mr. Phil. M. Soc </li>
+				</ul>
+			</div>
+			
 			<div class="former_exec">
 				<h4>2012-2013</h4>
 				<ul>
