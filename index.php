@@ -167,7 +167,7 @@
 		</section>
 			<div id="map-canvas"></div>
 		<section id="final">
-<p><a href="https://www.google.co.uk/maps/preview/place/Bede+Film+Society/@54.777147,-1.565535,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0xa9f917f2a83d5e24?hl=en">Situated in the spacious Caedmon Hall</a> in the beautiful grounds of Hild Bede, films are projected in Dolby 5.1 Surround Sound on the biggest screen in Durham. Durham’s only traditional student cinema and now in our 51st year, Bede Film Soc brings you one of the latest major releases each week, and with a wide range of sweets at our amazing value pick ‘n’ mix and drinks of all manner in The Vernon Arms just next door, Bede Film Soc offers the premier student cinema experience in Durham. <!-- <a href="history/">You can read more about our exciting history here.</a> --></p>
+<p><a href="https://www.google.co.uk/maps/preview/place/Bede+Film+Society/@54.777147,-1.565535,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0xa9f917f2a83d5e24?hl=en">Situated in the spacious Caedmon Hall</a> in the beautiful grounds of Hild Bede, films are shown in stunning quality by our incredible new Digital Cinema Projector on the biggest screen in Durham and with Dolby 5.1 Surround Sound, you really feel like a part of the film. As Durham’s only traditional student cinema and now in our <?php echo(ordinalSuffix(intval(date("Y"))-1962)) ?> year, Bede Film Soc brings you the latest major releases each week, and with a wide range of sweets at our amazing value pick ‘n’ mix and drinks of all manner in The Vernon Arms just next door, Bede Film Soc offers the premier student cinema experience in Durham. <!-- <a href="history/">You can read more about our exciting history here.</a> --></p>
 
 <p class="enjoy">Enjoy the film!</p>
 		</section>

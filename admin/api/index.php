@@ -84,9 +84,9 @@ function api_die($str, $code) {
 //Get the input. It should be a well formatted JSON string
 $api = $_POST['api'];
 
-$pass = file_get_contents('../editThisFileToChangePassword.txt');
+$pass = trim(file_get_contents('../editThisFileToChangePassword.txt'));
 if(!isset($_SESSION['logged_in']) or $_SESSION['logged_in'] !== md5($pass)) {
-	api_die("Bad credentials", 401);
+	api_die('Bad credentials', 401);
 }
 
 if($api === 'getFilmData') {
