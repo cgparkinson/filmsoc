@@ -248,9 +248,15 @@ header {
 			.animation(socialButtonPopup 0.75s cubic-bezier(.5,1.46,.78,1) 1s 1 normal both);
 		
 			&.facebook {
-				-webkit-animation-delay: 1.5s;
-				-moz-animation-delay: 1.5s;
-				animation-delay: 1.5s;
+				-webkit-animation-delay: 1.1s;
+				-moz-animation-delay: 1.1s;
+				animation-delay: 1.1s;
+			}
+			
+			&.youtube {
+				-webkit-animation-delay: 1.2s;
+				-moz-animation-delay: 1.2s;
+				animation-delay: 1.2s;
 			}
 		}
 	}
@@ -659,6 +665,12 @@ footer {
 			background: #55ACEE url('../images/twitter.png') center no-repeat;
 			background-image: url('../images/twitter.svg');
 			background-size: @icon auto;
+		}
+		
+		&.youtube {
+			background: #e62d27 url(../images/youtube.png) center no-repeat;
+			background-image: url(../images/youtube.svg);
+			background-size: 23px auto;
 		}
 	}
 }

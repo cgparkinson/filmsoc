@@ -54,6 +54,7 @@
 		<div class="social-buttons">
 			<a class="twitter" href="https://twitter.com/BedeFilmSoc"></a>
 			<a class="facebook" href="https://www.facebook.com/thebedefilmsoc"></a>
+			<a class="youtube" href="https://www.youtube.com/bedefilmsoc"></a>
 		</div>
 <?php
 	if(count($films) > 0) {
