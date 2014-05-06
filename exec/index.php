@@ -61,7 +61,7 @@
 				<li>Sweetie Lady, Kim Rau</li>
 				<li>Publicity Officer, Louise Message</li>
 				<li>Social Secretary, Sophi O' Connor</li>
-				<li>Sponsorship Secretary, Emma Thomason</li>
+				<li>Sponsorship Secretary, Andrew Robin</li>
 				<li>PR Officer, Ben Tattersley</li>
 				<li>Chief Projectionist, Katie Self</li>
 				<li>Club Mascot, Mr. Phil. M. Soc </li>
