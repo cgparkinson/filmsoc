@@ -62,14 +62,23 @@
 	// set the status
 	header($status_header);
 	//Set the content type
-	$content_type = 'application/json';
-	header('Content-type: ' . $content_type);
 	
-	echo json_encode(
+	$j = json_encode(
 		Array(
 			"poster_prefix"=>'http://community.dur.ac.uk/hildbede.filmsociety/posters/',
 			"films"=>$films
 		)
 	);
+	
+	if(isset($_GET['jsonp'])) {
+		$c = $_GET['jsonp'];
+		$content_type = 'text/javascript';
+		header('Content-type: ' . $content_type);
+		echo $c.'('.$j.')';
+	} else {
+		$content_type = 'application/json';
+		header('Content-type: ' . $content_type);
+		echo $j;
+	}
 	
 ?>

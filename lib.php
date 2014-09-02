@@ -25,7 +25,7 @@ class Filmsoc {
 		$filmsQuery = dbQuery("
 			SELECT *
 			FROM showings
-			ORDER BY time ASC
+			ORDER BY time DESC
 		");
 		$films = array();
 		while($f = $filmsQuery->fetch_assoc()) {
