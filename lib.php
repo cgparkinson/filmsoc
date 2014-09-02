@@ -20,6 +20,22 @@ class Filmsoc {
 		$filmsQuery->close();
 		return $films;
 	}
+	
+	static function getAllFilms() {
+		$filmsQuery = dbQuery("
+			SELECT *
+			FROM showings
+			ORDER BY time ASC
+		");
+		$films = array();
+		while($f = $filmsQuery->fetch_assoc()) {
+			array_push($films, $f+array(
+				"date" => date('D jS M g:ia',strtotime($f['time']))
+			));
+		}
+		$filmsQuery->close();
+		return $films;
+	}
 }
 
 function tokenize($arr, $str, $tokenIndicator="#") {
