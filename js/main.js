@@ -440,21 +440,22 @@ var Filmsoc = {
 						return !((/(\r\n|\n|\r)/gm).test(el))
 					}),
 					h = lines.length*110,
-					w = Math.max.apply(null, lines.slice(0).map(function(el) {
+					len = Math.max.apply(null, lines.slice(0).map(function(el) {
 						return el.length
-					}))*55,
+					})),
+					w = len*55,
 					imgs = {
 						filmstrip: pr.preloadImages[0].img,
 						logo: pr.preloadImages[1].img,
 						curtain: pr.preloadImages[2].img
 					}
-					
-				console.log(w, h, lines)
 				
+				
+				console.log(len+' cells wide')
 				c.width = w*2
 				c.style.width = w+'px'
 				c.height = h*2
-				c.style.height = h+'px'
+				//c.style.height = h+'px'
 				
 // 				var filmstrip = ctx.createPattern(imgs.filmstrip, 'repeat')
 // 				ctx.save()

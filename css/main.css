@@ -2403,12 +2403,10 @@ footer a {
   display: block;
 }
 #pr #fbcovercanvas {
-  width: 851px;
-  height: 315px;
+  max-width: 100%;
 }
 #pr #filmstriptextcanvas {
-  width: 330px;
-  height: 220px;
+  max-width: 100%;
 }
 #pr canvas + div {
   background: white;
