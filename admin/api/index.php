@@ -130,11 +130,15 @@ if($api === 'getFilmData') {
    		mkdir('../../posters/', 0777, true);
 	}
 	file_put_contents('../../posters/'.$posterName, file_get_contents($remotePosterURL));
+	
+	$runtime = $filmData['Runtime'];
+	$runtime = floor(strtotime($runtime)-time());
+	
 	$addNewShowingQuery = dbPrepBind("
 		INSERT INTO showings
-		(name, time, imdbid, plot, year, actors, poster)
-		VALUES (?, ?, ?, ?, ?, ?, ?)
-	", array($filmData['Title'], $_POST['time'], $_POST['imdbid'], $filmData['Plot'], $filmData['Year'], $filmData['Actors'], $posterName));
+		(name, time, imdbid, plot, year, actors, poster, runtime)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+	", array($filmData['Title'], $_POST['time'], $_POST['imdbid'], $filmData['Plot'], $filmData['Year'], $filmData['Actors'], $posterName, $runtime));
 	
 	$res = array(
 		"message" => "adding film was successful",
