@@ -70,6 +70,23 @@
 		<section>
 			<h2>Former Exec</h2>
 			<div class="former_exec">
+				
+				<h4>2014-2015</h4>
+				<ul>
+				<li>President, Matt Emmerson</li>
+				<li>Vice President, James Milne</li>
+				<li>Secretary, Leo Sutton</li>
+				<li>Treasurer, Adam Lewis</li>
+				<li>Sweetie Lady, Kim Rau</li>
+				<li>Publicity Officer, Louise Message</li>
+				<li>Social Secretary, Sophi O' Connor</li>
+				<li>Sponsorship Secretary, Andrew Robin</li>
+				<li>PR Officer, Ben Tattersley</li>
+				<li>Chief Projectionist, Katie Self</li>
+				<li>Club Mascot, Mr. Phil. M. Soc </li>
+				</ul>
+			</div>
+			<div class="former_exec">	
 				<h4>2013-2014</h4>
 				<ul>
 					<li>President, Alex Leadbeater</li>
