@@ -54,16 +54,16 @@
 		<section>
 			<h2>Current Exec</h2>
 			<ul id="exec_members">
-				<li>President, Matt Emmerson</li>
-				<li>Vice President, James Milne</li>
-				<li>Secretary, Leo Sutton</li>
-				<li>Treasurer, Adam Lewis</li>
-				<li>Sweetie Lady, Kim Rau</li>
-				<li>Publicity Officer, Louise Message</li>
-				<li>Social Secretary, Sophi O' Connor</li>
-				<li>Sponsorship Secretary, Andrew Robin</li>
-				<li>PR Officer, Ben Tattersley</li>
-				<li>Chief Projectionist, Katie Self</li>
+				<li>President, James Milne</li>
+				<li>Vice President, Katie Self</li>
+				<li>Secretary, Louise Message</li>
+				<li>Treasurer, Chris Parkinson</li>
+				<li>Sweetie Lady, Broccan Tyzack-Carlin</li>
+				<li>Publicity Officer, Mikey Bicarregui</li>
+				<li>Social Secretary, Robin Wallich</li>
+				<li>Sponsorship Secretary, Laura Robinson</li>
+				<li>PR Officer, Jessica Hodgson</li>
+				<li>Chief Projectionist, Adrian Chew</li>
 				<li>Club Mascot, Mr. Phil. M. Soc </li>
 			</ul>
 		</section>
