@@ -56,14 +56,6 @@ module.exports = (grunt) ->
 				]
 
 		'ftp-deploy':
-			# build:
-			# 	auth:
-			# 		host: 'ftp.dur.ac.uk'
-			# 		port: 21
-			# 		authKey: 'testing'
-			# 	src: 'build'
-			# 	dest: '/home/hudson/ug/chqx69/public_html/filmsoc'
-			# 	exclusions: ['.DS_Store']
 			deploy:
 				auth:
 					host: 'ftp.dur.ac.uk'
@@ -84,5 +76,4 @@ module.exports = (grunt) ->
 
 	# Default task(s)
 	grunt.registerTask 'default', ['watch']
-	grunt.registerTask 'build', ['less:build', 'copy:build', 'ftp-deploy:build']
 	grunt.registerTask 'deploy', ['less:build', 'copy:build', 'ftp-deploy:deploy']
