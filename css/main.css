@@ -1565,7 +1565,7 @@ main {
   width: 50%;
   height: 100%;
   text-align: center;
-  font-size: 100px;
+  font-size: 60px;
   font-weight: 300;
   float: left;
   position: relative;
@@ -1681,7 +1681,7 @@ main {
   #membership #priceinfo span,
   #admission #membershipinfo span,
   #membership #membershipinfo span {
-    font-size: 70px;
+    font-size: 50px;
   }
   #admission #priceinfo span .price::before,
   #membership #priceinfo span .price::before,
@@ -2587,9 +2587,9 @@ footer a {
   height: auto;
 }
 #history header {
-  -webkit-box-shadow: 0 0 5px #000000;
-  -moz-box-shadow: 0 0 5px #000000;
-  box-shadow: 0 0 5px #000000;
+  -webkit-box-shadow: 0 0 5px black;
+  -moz-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black;
 }
 #history .hero {
   color: white;
@@ -2620,9 +2620,9 @@ footer a {
   overflow: hidden;
 }
 #exec header {
-  -webkit-box-shadow: 0 0 5px #000000;
-  -moz-box-shadow: 0 0 5px #000000;
-  box-shadow: 0 0 5px #000000;
+  -webkit-box-shadow: 0 0 5px black;
+  -moz-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black;
   position: relative;
   z-index: 1;
 }
@@ -3044,4 +3044,3 @@ footer a {
   color: #ff8cc6;
 }
 /* Default layout */
-/*# sourceMappingURL=/filmsoc/css/map.map */
