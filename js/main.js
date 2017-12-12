@@ -256,9 +256,9 @@ var Filmsoc = {
 				document.body.appendChild(jsonPTag)
 				console.log(this.value)
 				if(Filmsoc.utils.imdbRegex.test(this.value)) {
-					jsonPTag.src = 'http://www.omdbapi.com/?i='+encodeURIComponent(this.value)+'&callback=gotFilmFromID'
+					jsonPTag.src = 'http://www.omdbapi.com/?apikey=f33947dc&i='+encodeURIComponent(this.value)+'&callback=gotFilmFromID'
 				} else {
-					jsonPTag.src = 'http://www.omdbapi.com/?s='+encodeURIComponent(this.value)+'&callback=getFilmSuggestions'
+					jsonPTag.src = 'http://www.omdbapi.com/?apikey=f33947dc&s='+encodeURIComponent(this.value)+'&callback=getFilmSuggestions'
 				}
 			})
 			

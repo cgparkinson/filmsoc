@@ -93,12 +93,14 @@ if($api === 'getFilmData') {
 	if(!isset($_POST['imdbid'])) {
 		api_die('No IMDB ID specified', 400);
 	}
-	$url = 'http://www.omdbapi.com/?i='.$_POST['imdbid'];
+	$url = 'http://www.omdbapi.com/?apikey=f33947dc&i='.$_POST['imdbid'];
 	$filmJSON = file_get_contents($url);
 	$filmData = json_decode($filmJSON, true);
 	$remotePosterURL = $filmData['Poster'];
 	$fileinfo = pathinfo($remotePosterURL);
-	$posterName = strtolower(str_replace(' ', '', $filmData['Title'])).$filmData['Year'].$_POST['imdbid'].'.'.$fileinfo['extension'];
+	$posterName = strtolower(str_replace(' ', '', $filmData['Title'])).$filmData['Year'].$_POST['imdbid'];
+	// CGP: ADD HERE the preg_replace. syntax:
+	$posterName = preg_replace('/[^ \w]+/', '', $posterName).'.'.$fileinfo['extension'];
 	
 	if (!file_exists('../../posters/')) {
    		mkdir('../../posters/', 0777, true);
@@ -120,12 +122,14 @@ if($api === 'getFilmData') {
 		api_die('Time is in incorrect format', 400);
 	}
 	
-	$url = 'http://www.omdbapi.com/?i='.$_POST['imdbid'];
+	$url = 'http://www.omdbapi.com/?apikey=f33947dc&i='.$_POST['imdbid'];
 	$filmJSON = file_get_contents($url);
 	$filmData = json_decode($filmJSON, true);
 	$remotePosterURL = $filmData['Poster'];
 	$fileinfo = pathinfo($remotePosterURL);
-	$posterName = strtolower(str_replace(' ', '', $filmData['Title'])).$filmData['Year'].$_POST['imdbid'].'.'.$fileinfo['extension'];
+	$posterName = strtolower(str_replace(' ', '', $filmData['Title'])).$filmData['Year'].$_POST['imdbid'];
+	// CGP: ADD HERE the preg_replace. syntax:
+        $posterName = preg_replace('/[^ \w]+/', '', $posterName).'.'.$fileinfo['extension'];
 	if (!file_exists('../../posters/')) {
    		mkdir('../../posters/', 0777, true);
 	}
@@ -133,7 +137,15 @@ if($api === 'getFilmData') {
 	
 	$runtime = $filmData['Runtime'];
 	$runtime = floor(strtotime($runtime)-time());
-	
+	// CGP: so structure is 
+	// name: name of the film (string)
+	// time: inputted time (string?)
+	// imdbid: inputted IMDB ID (string?)
+	// plot: string
+	// year: string
+	// actors: string
+	// poster: filename of the poster
+	// runtime: a *time* (but seems unnecessary? what does it do)
 	$addNewShowingQuery = dbPrepBind("
 		INSERT INTO showings
 		(name, time, imdbid, plot, year, actors, poster, runtime)
